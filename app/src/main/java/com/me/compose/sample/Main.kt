@@ -1,42 +1,31 @@
 package com.me.compose.sample
 
 fun main() {
-//    val trickFunction = ::trick
-//    trick()
-//    trickFunction()
-//    treat()
-    val coins: (Int) -> String = { quantity ->
-        "$quantity quarters"
+
+    val celsius: (Double) -> Double = { celsius ->
+        (9.0.div(5)*celsius) + 32
+//        (((9 / 5)) * (celsius)) + 32
     }
-    val cupcake: (Int) -> String = {
-        "Have a cupcake!"
+    val kelvin: (Double) -> Double = { kelvin ->
+        kelvin - 273.15
+    }
+    val fahrenheit: (Double) -> Double = { fahrenheit ->
+        (5.0.div(9)) - (fahrenheit - 32) + 273.15
     }
 
-//    val treatFunction = trickOrTreat(false, coins)
-    val treatFunction = trickOrTreat(false) { "$it quarters" }
-//    val trickFunction = trickOrTreat(true, cupcake)
-    val trickFunction = trickOrTreat(true, null)
-//    treatFunction()
-    repeat(4) {
-        treatFunction()
-    }
-    trickFunction()
 
+    printFinalTemperature(27.0, "Celsius", "Fahrenheit", celsius)
+    printFinalTemperature(350.0, "Kelvin", "Celsius", kelvin)
+    printFinalTemperature(10.0, "Fahrenheit", "Kelvin", fahrenheit)
 }
 
-fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
-    if (isTrick) {
-        return trick
-    } else {
-        println(extraTreat?.let { it(5) })
-        return treat
-    }
-}
-
-val trick = {
-    println("No treats!")
-}
-
-val treat = {
-    println("Have a treat!")
+fun printFinalTemperature(
+    initialMeasurement: Double,
+    initialTemperature: String,
+    finalUnit: String,
+    conversionFormula: (Double) -> Double
+) {
+    val finalMeasurement =
+        String.format("%.2f", conversionFormula(initialMeasurement)) // two decimal places
+    println("$initialMeasurement degrees $initialTemperature is $finalMeasurement degrees $finalUnit.")
 }

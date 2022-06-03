@@ -1,31 +1,56 @@
 package com.me.compose.sample
 
 fun main() {
+    val winningBid = Bid(5000, "Private Collector")
 
-    val celsius: (Double) -> Double = { celsius ->
-        (9.0.div(5)*celsius) + 32
-//        (((9 / 5)) * (celsius)) + 32
-    }
-    val kelvin: (Double) -> Double = { kelvin ->
-        kelvin - 273.15
-    }
-    val fahrenheit: (Double) -> Double = { fahrenheit ->
-        (5.0.div(9)) - (fahrenheit - 32) + 273.15
-    }
+    println("Item A is sold at ${auctionPrice(winningBid, 2000)}.")
+    println("Item B is sold at ${auctionPrice(null, 3000)}.")
 
+    val newFoldablePhone = FoldablePhone()
 
-    printFinalTemperature(27.0, "Celsius", "Fahrenheit", celsius)
-    printFinalTemperature(350.0, "Kelvin", "Celsius", kelvin)
-    printFinalTemperature(10.0, "Fahrenheit", "Kelvin", fahrenheit)
+    newFoldablePhone.switchOn()
+    newFoldablePhone.checkPhoneScreenLight()
+    newFoldablePhone.unfold()
+    newFoldablePhone.switchOn()
+    newFoldablePhone.checkPhoneScreenLight()
 }
 
-fun printFinalTemperature(
-    initialMeasurement: Double,
-    initialTemperature: String,
-    finalUnit: String,
-    conversionFormula: (Double) -> Double
-) {
-    val finalMeasurement =
-        String.format("%.2f", conversionFormula(initialMeasurement)) // two decimal places
-    println("$initialMeasurement degrees $initialTemperature is $finalMeasurement degrees $finalUnit.")
+class Bid(val amount: Int, val bidder: String)
+
+fun auctionPrice(bid: Bid?, minimumPrice: Int): Int {
+    return bid?.amount ?: minimumPrice
 }
+
+open class Phone(var isScreenLightOn: Boolean = false) {
+    open fun switchOn() {
+        isScreenLightOn = true
+    }
+
+    fun switchOff() {
+        isScreenLightOn = false
+    }
+
+    fun checkPhoneScreenLight() {
+        val phoneScreenLight = if (isScreenLightOn) "on" else "off"
+        println("The phone screen's light is $phoneScreenLight.")
+    }
+}
+
+class FoldablePhone(var isFolded: Boolean = true) : Phone() {
+    override fun switchOn() {
+        if (!isFolded) {
+            isScreenLightOn = true
+        }
+    }
+
+    fun fold() {
+        isFolded = true
+    }
+
+    fun unfold() {
+        isFolded = false
+    }
+}
+
+
+

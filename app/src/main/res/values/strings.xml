@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">android-compose</string>
+    <string name="android_text">Android</string>
+</resources>

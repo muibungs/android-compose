@@ -60,6 +60,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, from: String) {
+
     Box(content = {
         Column(
             modifier = Modifier.fillMaxHeight(),
@@ -170,3 +171,4 @@ fun CardHeaderPreview() {
 fun CardDescriptionPreview() {
     CardDescription(iconRes = R.drawable.ic_info_black_24dp, "demo")
 }
+

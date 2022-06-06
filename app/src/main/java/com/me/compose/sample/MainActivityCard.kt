@@ -135,30 +135,30 @@ fun CardHeader() {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    AndroidcomposeTheme {
-        Column(
-            Modifier
-                .fillMaxSize()
-        ) {
-            Column(
-                modifier = Modifier
-                    .weight(4f)
-                    .wrapContentHeight(Alignment.CenterVertically)
-            ) {
-                CardHeader()
-            }
-            Column(modifier = Modifier.weight(1f)) {
-                CardDescription(iconRes = R.drawable.ic_info_black_24dp, "info")
-                CardDescription(iconRes = R.drawable.ic_check_circle_black_24dp, "check")
-                CardDescription(iconRes = R.drawable.ic_delete_black_24dp, "delete")
-            }
-
-        }
-    }
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun DefaultPreview() {
+//    AndroidcomposeTheme {
+//        Column(
+//            Modifier
+//                .fillMaxSize()
+//        ) {
+//            Column(
+//                modifier = Modifier
+//                    .weight(4f)
+//                    .wrapContentHeight(Alignment.CenterVertically)
+//            ) {
+//                CardHeader()
+//            }
+//            Column(modifier = Modifier.weight(1f)) {
+//                CardDescription(iconRes = R.drawable.ic_info_black_24dp, "info")
+//                CardDescription(iconRes = R.drawable.ic_check_circle_black_24dp, "check")
+//                CardDescription(iconRes = R.drawable.ic_delete_black_24dp, "delete")
+//            }
+//
+//        }
+//    }
+//}
 
 @Preview(showBackground = true)
 @Composable
